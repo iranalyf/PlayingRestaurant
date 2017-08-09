@@ -88,8 +88,6 @@ Restaurante.GraficoTotalPorAno = (function(){
 $(function(){
     var graficoTotalPorMes = new Restaurante.GraficoTotalPorMes();
     graficoTotalPorMes.iniciar();
-
-    var graficoTotalPorAno = new Restaurante.GraficoTotalPorAno();
 });
 
 
