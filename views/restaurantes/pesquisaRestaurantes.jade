@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+
+    h4 Restaurantes
+    br
+    h5 Filtros
+    form(method="GET" action="/restaurantes")
+        div(style="margin-left: 40px")
+            input(class="form-control", name="nomeRestaurante" placeholder="pesquise pelo nome do restaurante...")
+            br
+            br
+            button(class="btn btn-primary") Pesquisar     
+            a(class="btn btn-success", style="margin-left: 20px", href="/restaurantes/novo") Cadastrar novo Restaurante
+        br
+        br
+    if messages.erro
+        div(class="alert alert-danger")
+            p messages.erro
+        br
+    if restaurantes.lenght == null
+        table(class="table table-striped")
+            thead
+                tr
+                    th ID:
+                    th Nome:
+                    th Ações:
+            tbody
+                each r in restaurantes
+                    tr
+                        td #{r._id}
+                        td #{r.nome}
+                        td 
+                            a(href="#" ,class="btn btn-danger", style="margin-right: 20px")
+                                span(class="glyphicon glyphicon-trash")
+                            a(href="/restaurantes/#{r._id}", class="btn btn-primary")
+                                span(class="glyphicon glyphicon-pencil")
+    else
+        p Nenhum restaurante encontrado 

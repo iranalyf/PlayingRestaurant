@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/bootstrap-aux.css")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    div(class="container")
+        div(class="masthead")
+            h3(class="text-muted") Projeto Restaurantes
+        
+        include partials/menu
+
+        block content
+
+        include partials/footer
+
+    script(src="/js/jquery.min.js")
+    script(src="/js/bootstrap.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js")
+    script(src="/js/chart-bar.js")
+    script(src="/js/chart-line.js")

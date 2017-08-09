@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+
+    h4 Pratos
+    br
+    br
+    a(class="btn btn-success", style="margin-left: 40px", href="/pratos/novo") Cadastrar novo Prato
+    br
+    br
+    if pratos.lenght == null
+        table(class="table table-striped")
+            thead
+                tr
+                    th ID:
+                    th Restaurante:
+                    th Prato:
+                    th Valor:
+                    th Data do Cadastro:
+                    th Ações:
+            tbody
+                each p in pratos
+                    tr
+                        td #{p._id}
+                        td #{p.restaurante}
+                        td #{p.nome}
+                        td #{p.valor}
+                        td #{moment(p.data_cad).format('DD/MM/YYYY HH:MM:ss')}
+                        td
+    else
+        p Nenhum prato encontrado 

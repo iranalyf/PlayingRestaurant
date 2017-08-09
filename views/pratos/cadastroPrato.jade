@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+
+    h4 Cadastro de Prato
+    if messages.info
+        div(class="alert alert-success")
+            b #{messages.info}
+    if messages.erro
+        div(class="alert alert-danger")
+            b #{messages.erro}
+    div(style="margin-left: 40px")
+        h5 Dados
+        br
+    form(method="POST", action="/pratos/novo")    
+        label Restaurante:
+        select(class="form-control", name="restaurante")
+            option(value="") Selecione
+            each r in restaurantes
+                option(value="#{r._id}", label="#{r.nome}")
+                
+        br
+        label Prato:
+        input(class="form-control" name="nome")
+        br
+        label Preço(R$):
+        input(class="form-control", name="valor")
+        br
+        button(class="btn btn-success") salvar
