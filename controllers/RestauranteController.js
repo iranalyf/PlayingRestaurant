@@ -31,7 +31,7 @@ module.exports = function(app){
         },
 
         pesquisa: function(req,res){
-             if(req.params != null){
+             if(req.params == null){
             Restaurante.find(function(err,data){
                 if(err){
                     req.flash("erro", "Erro ao buscar restaurantes"+ err);
@@ -43,14 +43,15 @@ module.exports = function(app){
             );
             }else{
                 var nomeRestaurante = req.params.nomeRestaurante;
-                Restaurante.find("/" + nomeRestaurante + "/", function(err,data){
+                Restaurante.find({"nome": new RegExp('/'+nomeRestaurante+'/i') },function(err,data){
                     if(err){
-
+                        
                     }
                     res.render("restaurantes/pesquisaRestaurantes",{restaurantes: data});
                 });
+                    
             }
-            }
+        }
     }
     return RestauranteController;
 }
